@@ -14,6 +14,15 @@ class PostFullResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return  [
+            'id' => $this->id,
+            'title' => $this->title,
+            'body' => $this->body,
+            'author'=>$this->user->name,
+            'link'=>route('showPost',$this->id),
+            'upvote'=> $this->upvote(),
+            'comments'=> CommentResource::collection($this->comments),
+            'created_at' => $this->created_at->format('Y-m-d h:m'),
+        ];
     }
 }

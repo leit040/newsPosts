@@ -14,8 +14,9 @@ class CreatePostVoteTable extends Migration
     public function up()
     {
         Schema::create('post_vote', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigInteger('post_id');
+            $table->bigInteger('user_id');
+
         });
     }
 
