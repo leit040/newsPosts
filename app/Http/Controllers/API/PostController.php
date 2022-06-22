@@ -72,6 +72,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $post->comments()->delete();
         $post->delete();
         return response('', 204);
     }
